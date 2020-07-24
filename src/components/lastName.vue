@@ -134,7 +134,7 @@
                         <label>Дом</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="na" name="lastname" placeholder="Your last name.."/>
+                        <input type="text"  name="lastname" placeholder="Your last name.."/>
                     </div>
                 </div>
 
