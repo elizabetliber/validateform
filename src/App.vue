@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-      <lastName/>
+      <formThird/>
   </div>
 </template>
 
 <script>
-import lastName from '@/components/lastName'
+import formThird from './components/formThird'
 
 export default {
   name: 'App',
   components: {
-    lastName: lastName
+    formThird
   }
 }
 </script>
