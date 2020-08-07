@@ -422,13 +422,6 @@ input[type=submit] {
 }
 
 strong {
-  line-height: inherit;
-  color: red;
-  text-align: left;
-  font-size: 15px;
-}
-
-strong {
   color: red;
   font-size: 13px;
 }
