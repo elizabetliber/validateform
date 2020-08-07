@@ -16,7 +16,7 @@
                   id="lastname"
                   v-model.trim="form.lastName"
                   type="text"
-                  placeholder="Введите фамилию" >
+                  placeholder="Введите фамилию">
               <strong v-if="$v.form.lastName.$dirty && !$v.form.lastName.required">
                 * Заполните поле фамилия.
               </strong>
@@ -88,12 +88,12 @@
           </div>
 
           <div class="row">
-                      <div class="col-25">
+            <div class="col-25">
               <label>Пол</label>
             </div>
 
             <div class="col-75">
-              <select >
+              <select>
                 <option disabled value="">Выберите один из вариантов</option>
                 <option>Мужской</option>
                 <option>Женский</option>
@@ -114,7 +114,7 @@
                   {{ group.label }}
                 </option>
               </select>
-{{form.group}}
+              {{ form.group }}
               <strong v-if="$v.form.group.$dirty && !$v.form.group.maxCount">
                 * Выберите два варианта из предложенных.
               </strong>
@@ -126,20 +126,158 @@
             </div>
           </div>
 
-<!--          <div class="row">-->
-<!--            <div class="col-25">-->
-<!--              <label>Лечащий врач</label>-->
-<!--            </div>-->
-<!--            <div class="col-75">-->
-<!--              <select v-model="selected">-->
-<!--                <option disabled value="">Выберите один из вариантов</option>-->
-<!--                <option>Иванов</option>-->
-<!--                <option>Захаров</option>-->
-<!--                <option>Чернышева</option>-->
-<!--              </select>-->
-<!--            </div>-->
-<!--          </div>-->
+          <div class="row">
+            <div class="col-25">
+              <label>Лечащий врач</label>
+            </div>
+            <div class="col-75">
+              <select>
+                <option disabled value="">Выберите один из вариантов</option>
+                <option>Иванов</option>
+                <option>Захаров</option>
+                <option>Чернышева</option>
+              </select>
+            </div>
 
+          </div>
+
+
+          <div class="row">
+            <input type="checkbox"
+                   checked="checked"> Не отправлять СМС
+          </div>
+
+          <div class="row">
+            <h3>Адрес:</h3>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Индекс</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder="Индекс">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Страна</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder="Страна">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Область</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder="Область"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label for="city">Город<sup style="color:red;">*</sup></label>
+            </div>
+            <div class="col-75">
+              <input
+                  type="text"
+                  v-model="form.city"
+                  placeholder="Город"
+                  id="city"
+              >
+              <strong v-if="$v.form.city.$dirty && !$v.form.city.required">
+                * Заполните поле город.
+              </strong>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Улица</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder="Улица"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Дом</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder="Дом"/>
+            </div>
+          </div>
+          <div class="row">
+            <h3>Паспорт:</h3>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Тип документа<sup style="color:red;">*</sup></label>
+            </div>
+            <div class="col-75">
+              <select v-model="form.selected">
+                <option disabled value="">Выберите один из вариантов</option>
+                <option v-for="(selected,index) in form.typeDocument"
+                        :key="index"
+                >
+                  {{ selected.type }}
+                </option>
+              </select>
+              <strong v-if="$v.form.selected.$dirty && !$v.form.selected.required">
+                * Заполните поле тип документа.
+              </strong>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label>Серия</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder=""/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Номер</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder=""/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label>Кем выдан</label>
+            </div>
+            <div class="col-75">
+              <input type="text" placeholder=""/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label for="dateDocument">Дата выдачи<sup style="color:red;">*</sup></label>
+            </div>
+            <div class="col-75">
+              <input
+                  type="date"
+                  placeholder=""
+                  v-model="form.dateDocument"
+                  id="dateDocument"
+              >
+              <strong v-if="$v.form.dateDocument.$dirty && !$v.form.dateDocument.required">
+                * Заполните поле дата выдачи.
+              </strong>
+            </div>
+          </div>
           <div class="row">
             <h4><em style="color:red;">*</em> Поле обязательное для заполнения.</h4>
           </div>
@@ -174,12 +312,19 @@ export default {
         data: '',
         number: '',
         group: [],
-        selected: '',
+        selected: [],
+        typeDocument: [
+          {type: 'Паспорт'},
+          {type: 'Свидетельство о рождении'},
+          {type: 'Водительское удостоверение'}
+        ],
         groupClient: [
           {label: 'VIP'},
           {label: 'Проблемные'},
           {label: 'ОМС'}
-        ]
+        ],
+        city: '',
+        dateDocument: ''
       }
     }
   },
@@ -189,9 +334,12 @@ export default {
       name: {required},
       data: {required},
       number: {required, numeric},
+      selected: {required},
+      city: {required},
+      dateDocument: {required},
       group: {required,
         maxCount(value) {
-          return value.length < 1
+          return value.length < 2
         }
       }
     }
@@ -205,59 +353,6 @@ export default {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-  // data() {
-  //   return {
-  //     errors: {},
-  //     name: null,
-  //     city: null,
-  //     number: null,
-  //     lastName: null,
-  //     data: null,
-  //     sxx: null,
-  //     selected: null,
-  //     dateDocument: null,
-  //     users: [
-  //       {document: 'Паспорт'},
-  //       {document: 'Свидетельство о рождении'},
-  //       {document: 'Водительское удостоверение'}
-  //     ],
-  //     selectedUsers: [],
-  //   }
-  // },
-  // methods: {
-  //   checkForm: function (e) {
-  //     if (this.name && this.age && this.lastName && this.number && this.selectedUsers ) return true;
-  //     this.errors = {};
-  //     if (!this.lastName) this.errors["lastName"] = "* Заполните поле Фамилия.";
-  //     if (!this.name) this.errors["name"] = "* Заполните поле Имя.";
-  //     if (!this.city) this.errors["city"] = "* Заполните поле Город.";
-  //     if (!this.dateDocument) this.errors["dateDocument"] = "* Укажите дату выдачи документа."
-  //     if (!this.data) this.errors["data"] = '* Укажите дату рождения.';
-  //     // if (this.selected.option=="") this.errors["selected"] = '* Укажите тип документа.';
-  //
-  //     if (!this.number) {
-  //       this.errors["number"] = '* Укажите номер телефона.';
-  //     } else if (!this.validPhoneNumber(this.number)) {
-  //       this.errors["number"] = '* Укажите корректный номер в формате: +7(903)-888-88-88 или 8(999)-99-999-99)';
-  //     }
-  //     e.preventDefault();
-  //   },
-  //   validPhoneNumber: function (number) {
-  //     let nu = /^\+?[78][-(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/;
-  //     return nu.test(number);
-  //   }
-  // }
-
-
 
 </script>
 
@@ -338,8 +433,9 @@ strong {
   text-align: left;
   font-size: 15px;
 }
-strong{
-  color:red;
-  font-size:13px;
+
+strong {
+  color: red;
+  font-size: 13px;
 }
 </style>
