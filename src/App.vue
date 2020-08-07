@@ -21,7 +21,6 @@
                 * Заполните поле фамилия.
               </strong>
             </div>
-
           </div>
 
           <div class="row">
@@ -91,7 +90,6 @@
             <div class="col-25">
               <label>Пол</label>
             </div>
-
             <div class="col-75">
               <select>
                 <option disabled value="">Выберите один из вариантов</option>
@@ -118,11 +116,9 @@
               <strong v-if="$v.form.group.$dirty && !$v.form.group.maxCount">
                 * Выберите два варианта из предложенных.
               </strong>
-
               <strong v-if="$v.form.group.$dirty && !$v.form.group.required">
                 * Заполните поле группа клиентов.
               </strong>
-
             </div>
           </div>
 
@@ -138,7 +134,6 @@
                 <option>Чернышева</option>
               </select>
             </div>
-
           </div>
 
 
@@ -150,7 +145,6 @@
           <div class="row">
             <h3>Адрес:</h3>
           </div>
-
           <div class="row">
             <div class="col-25">
               <label>Индекс</label>
