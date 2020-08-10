@@ -9,7 +9,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label for="lastName">Фамилия<sup style="color:red;">*</sup></label>
+              <label for="lastName">Фамилия<sup  class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <input
@@ -25,7 +25,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label for="name">Имя<sup style="color:red;">*</sup></label>
+              <label for="name">Имя<sup  class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <input
@@ -53,7 +53,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label for="data">Дата рождения<sup style="color:red;">*</sup></label>
+              <label for="data">Дата рождения<sup  class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <input
@@ -69,7 +69,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label for="number">Номер телефона<sup style="color:red;">*</sup></label>
+              <label for="number">Номер телефона<sup class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <input
@@ -81,7 +81,7 @@
                 * Заполните поле номер телефона.
               </strong>
               <strong v-if="$v.form.number.$dirty && !$v.form.number.numeric">
-                * Укажите корректный номер в формате: +7(903)-888-88-88 или 8(999)-99-999-99)
+                * Укажите корректный номер в формате: +7(903)-888-88-88 или 8(999)-999-99-99
               </strong>
             </div>
           </div>
@@ -101,7 +101,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label>Группа клиентов<sup style="color:red;">*</sup></label>
+              <label>Группа клиентов<sup class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <select v-model="form.group" multiple>
@@ -112,12 +112,8 @@
                   {{ group.label }}
                 </option>
               </select>
-              {{ form.group }}
               <strong v-if="$v.form.group.$dirty && !$v.form.group.maxCount">
                 * Выберите два варианта из предложенных.
-              </strong>
-              <strong v-if="$v.form.group.$dirty && !$v.form.group.required">
-                * Заполните поле группа клиентов.
               </strong>
             </div>
           </div>
@@ -135,7 +131,6 @@
               </select>
             </div>
           </div>
-
 
           <div class="row">
             <input type="checkbox"
@@ -174,7 +169,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label for="city">Город<sup style="color:red;">*</sup></label>
+              <label for="city">Город<sup class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <input
@@ -212,7 +207,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label>Тип документа<sup style="color:red;">*</sup></label>
+              <label>Тип документа<sup class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <select v-model="form.selected">
@@ -224,7 +219,7 @@
                 </option>
               </select>
               <strong v-if="$v.form.selected.$dirty && !$v.form.selected.required">
-                * Заполните поле тип документа.
+                * Выберите один вариант из предложенных.
               </strong>
             </div>
 
@@ -258,7 +253,7 @@
 
           <div class="row">
             <div class="col-25">
-              <label for="dateDocument">Дата выдачи<sup style="color:red;">*</sup></label>
+              <label for="dateDocument">Дата выдачи<sup class="colorRed">*</sup></label>
             </div>
             <div class="col-75">
               <input
@@ -273,7 +268,7 @@
             </div>
           </div>
           <div class="row">
-            <h4><em style="color:red;">*</em> Поле обязательное для заполнения.</h4>
+            <h4><em class="colorRed">*</em> Поле обязательное для заполнения.</h4>
           </div>
 
           <div class="row">
@@ -331,9 +326,9 @@ export default {
       selected: {required},
       city: {required},
       dateDocument: {required},
-      group: {required,
+      group: {
         maxCount(value) {
-          return value.length < 2
+          return value.length > 1
         }
       }
     }
@@ -424,5 +419,8 @@ input[type=submit] {
 strong {
   color: red;
   font-size: 13px;
+}
+.colorRed{
+  color:red;
 }
 </style>
